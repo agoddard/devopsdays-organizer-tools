@@ -28,7 +28,9 @@ ws.rows.each_with_index do |row,index|
   if %w(introduction break lunch closing).include? event.downcase
     puts "<div class=\"span-4 append-bottom last\">#{event}</div>"
   else
-    puts "<div class=\"span-4 box last\"><strong>#{event}</strong><br /> #{description}</div>"
+    print "<div class=\"span-4 box last\"><strong>#{event}</strong>"
+    print " (#{type}) " unless type == ""
+    print "<br /> #{description}</div>"
   end
   if event.downcase == "closing"
     puts "</div>"
