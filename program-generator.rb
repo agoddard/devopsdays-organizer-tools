@@ -4,11 +4,9 @@ account = YAML.load_file('./account.yaml')
 session = GoogleDrive.login(account['mail'], account['password'])
 key = ARGV[0]
 ws = session.spreadsheet_by_key(key).worksheets[0]
-
 ws.rows.each_with_index do |row,index|
 
   time,event,description,type,location = row
-  
   next if time == ""
     
   #day header
@@ -19,14 +17,9 @@ ws.rows.each_with_index do |row,index|
     puts "</div>"
     next
   end
-  
 
   time = Time.parse(time).strftime('%H:%M') rescue nil
   finish_time = Time.parse(ws.rows[index+1][0]).strftime('%H:%M') rescue nil
-  
-  
-
-    
   
   print "<div class=\"span-2\">#{time}"
   print "- #{finish_time ||= ''}" if finish_time
@@ -40,6 +33,4 @@ ws.rows.each_with_index do |row,index|
   if event.downcase == "closing"
     puts "</div>"
   end
-
-  
 end
