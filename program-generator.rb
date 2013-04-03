@@ -18,7 +18,7 @@ ws.rows.each_with_index do |row,index|
     next
   end
 
-  time = Time.parse(time).strftime('%H:%M') rescue nil
+  time = Time.parse(time).strftime('%H:%M')
   finish_time = Time.parse(ws.rows[index+1][0]).strftime('%H:%M') rescue nil
   
   print "<div class=\"span-2\">#{time}"
