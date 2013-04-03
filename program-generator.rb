@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 require 'google_drive'
 
 account = YAML.load_file('./account.yaml')
