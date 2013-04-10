@@ -1,8 +1,21 @@
 #!/usr/bin/env ruby
 require 'google_drive'
 
-account = YAML.load_file('./account.yaml')
-session = GoogleDrive.login(account['mail'], account['password'])
+
+# retreives program from google spreadsheet, outputs HTML for DevOpsDays webby site.
+
+
+account = YAML.load_file('./settings.yaml')
+session = GoogleDrive.login(settings['mail'], settings['password'])
+
+
+# prolly wanna optparse
+if ARGV[0].nil?
+  puts "You must supply a google spreadsheet key"
+  puts "Usage: ruby program-generator.rb (key)"
+  exit 1
+end
+
 key = ARGV[0]
 ws = session.spreadsheet_by_key(key).worksheets[0]
 ws.rows.each_with_index do |row,index|
