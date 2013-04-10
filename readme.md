@@ -1,6 +1,7 @@
 A few hacky scripts for automating tasks for planning devopsdays events
 Patches welcome!
 
+These scripts have only been tested with the Austin 2013 spreadsheet, YMMV. I've tried to keep things general but email notifications are still hardcoded for Austin
 
 
 ##program-generator
