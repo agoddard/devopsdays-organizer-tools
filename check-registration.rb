@@ -32,10 +32,7 @@ eb_client = EventbriteClient.new(eb_auth_tokens)
 
 #could do with some cleanup here 0_o
 attendees = eb_client.event_list_attendees({ id: event_id})
-registered_attendees = []
-attendees.first[1].each do|attendee|
-  registered_attendees << attendee['attendee']['first_name'].downcase + ' ' + attendee['attendee']['last_name'].downcase
-end
+registered_attendees = attendees.first[1].collect{|attendee|attendee['attendee']['first_name'].downcase + ' ' + attendee['attendee']['last_name'].downcase}
 
 worksheets = ["Accepted Ignites","Accepted Talks"]
 
